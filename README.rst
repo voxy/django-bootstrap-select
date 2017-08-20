@@ -11,7 +11,7 @@ Django Bootstrap Select
 .. image:: https://codecov.io/gh/massover/django-bootstrap-select/branch/master/graph/badge.svg
     :target: https://codecov.io/gh/massover/django-bootstrap-select
 
-A wDjango wrapper for the Bootstrap Select library
+A Django wrapper for the Bootstrap Select library
 
 Documentation
 -------------
