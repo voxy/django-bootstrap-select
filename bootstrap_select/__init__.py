@@ -1,3 +1,3 @@
 __version__ = '0.1.0'
 
-from .widgets import BootstrapSelect
+from .widgets import BootstrapSelect  # noqa

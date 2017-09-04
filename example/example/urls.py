@@ -19,5 +19,4 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'', include('bootstrap_select.urls', namespace='bootstrap_select')),
 ]

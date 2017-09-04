@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'bootstrap_select',
+    'example_app',
 
     # if your app has other dependencies that need to be added to the site
     # they should be added here

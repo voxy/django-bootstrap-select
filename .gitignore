@@ -47,3 +47,5 @@ output/*/index.html
 docs/_build
 
 venv
+example/db.sqlite3
+example/staticfiles

@@ -5,11 +5,11 @@ Django Bootstrap Select
 .. image:: https://badge.fury.io/py/django-bootstrap-select.svg
     :target: https://badge.fury.io/py/django-bootstrap-select
 
-.. image:: https://travis-ci.org/massover/django-bootstrap-select.svg?branch=master
-    :target: https://travis-ci.org/massover/django-bootstrap-select
+.. image:: https://travis-ci.org/voxy/django-bootstrap-select.svg?branch=master
+    :target: https://travis-ci.org/voxy/django-bootstrap-select
 
-.. image:: https://codecov.io/gh/massover/django-bootstrap-select/branch/master/graph/badge.svg
-    :target: https://codecov.io/gh/massover/django-bootstrap-select
+.. image:: https://codecov.io/gh/voxy/django-bootstrap-select/branch/master/graph/badge.svg
+    :target: https://codecov.io/gh/voxy/django-bootstrap-select
 
 A Django wrapper for the Bootstrap Select library
 
@@ -35,23 +35,23 @@ Add it to your `INSTALLED_APPS`:
         ...
     )
 
-Add Django Bootstrap Select's URL patterns:
+Using it in a form:
 
 .. code-block:: python
 
-    from bootstrap_select import urls as bootstrap_select_urls
+    def get_choices():
+        choices = (('face.jpg', escape('<img src="path-to-face.jpg"/>'),)
+        return choices
 
-
-    urlpatterns = [
-        ...
-        url(r'^', include(bootstrap_select_urls)),
-        ...
-    ]
+    class IconForm(forms.Form):
+        icon = forms.URLField(widget=BootstrapSelect(choices=get_choices()))
 
 Features
 --------
 
-* TODO
+* Renders labels from form choices as `custom-content`_.
+
+.. _`custom-content`: https://silviomoreto.github.io/bootstrap-select/examples/#custom-content
 
 Running Tests
 -------------

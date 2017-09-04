@@ -15,7 +15,8 @@ class TestBootstrapSelect(SimpleTestCase):
             icon = forms.URLField(widget=BootstrapSelect(choices=self.CHOICES))
 
         form = ExampleForm()
-        option_html = '<option value="face" data_content="example.com/face.jpg">example.com/face.jpg</option>'
+        option_html = ('<option data-content="example.com/face.jpg" value="face" >'
+                       'example.com/face.jpg</option>')
         self.assertInHTML(option_html, form.as_p())
 
     def test_it_allows_additional_class_attrs(self):

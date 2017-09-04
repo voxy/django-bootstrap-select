@@ -1,3 +1,5 @@
+from django.contrib.staticfiles.templatetags.staticfiles import static
+from django import forms
 from django.forms import Select
 from django.utils.encoding import force_text
 from django.utils.html import format_html
@@ -6,14 +8,18 @@ from django.utils.safestring import mark_safe
 
 class BootstrapSelect(Select):
 
-    class Media:
-        css = {
-            'all': ('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
-                    '//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css', )
-        }
-        js = ('//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js',
-              '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
-              '//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js',)
+    @property
+    def media(self):
+        return forms.Media(
+            css={
+                'all': ('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+                        '//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css',  # noqa
+                        static('bootstrap_select/bootstrap_select.css'),)
+            },
+            js=('//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js',
+                '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
+                '//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js',)  # noqa
+        )
 
     def __init__(self, attrs=None, choices=()):
         if attrs is None:
@@ -37,13 +43,15 @@ class BootstrapSelect(Select):
                 selected_choices.remove(option_value)
         else:
             selected_html = ''
-        return format_html('<option data-content="{}" value="{}"{}></option>',
-                           force_text(option_label),
+        return format_html('<option value="{}" data-content="{}" {}>{}</option>',
                            option_value,
-                           selected_html,)
+                           force_text(option_label),
+                           selected_html,
+                           force_text(option_label),)
 
     # Django 1.11
     def create_option(self, name, value, label, selected, index, subindex=None, attrs=None):
-        option = super(BootstrapSelect, self).create_option(name, value, label, selected, index, subindex=None, attrs=None)
-        option['attrs']['data_content'] = label
+        option = super(BootstrapSelect, self).create_option(name, value, label, selected,
+                                                            index, subindex=None, attrs=None)
+        option['attrs']['data-content'] = label
         return option

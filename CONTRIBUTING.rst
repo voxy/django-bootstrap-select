@@ -3,7 +3,7 @@ Contributing
 ============
 
 Contributions are welcome, and they are greatly appreciated! Every
-little bit helps, and credit will always be given. 
+little bit helps, and credit will always be given.
 
 You can contribute in many ways:
 
@@ -13,7 +13,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/massover/django-bootstrap-select/issues.
+Report bugs at https://github.com/voxy/django-bootstrap-select/issues.
 
 If you are reporting a bug, please include:
 
@@ -36,14 +36,14 @@ is open to whoever wants to implement it.
 Write Documentation
 ~~~~~~~~~~~~~~~~~~~
 
-Django Bootstrap Select could always use more documentation, whether as part of the 
+Django Bootstrap Select could always use more documentation, whether as part of the
 official Django Bootstrap Select docs, in docstrings, or even on the web in blog posts,
 articles, and such.
 
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
-The best way to send feedback is to file an issue at https://github.com/massover/django-bootstrap-select/issues.
+The best way to send feedback is to file an issue at https://github.com/voxy/django-bootstrap-select/issues.
 
 If you are proposing a feature:
 
@@ -81,7 +81,7 @@ Ready to contribute? Here's how to set up `django-bootstrap-select` for local de
         $ python setup.py test
         $ tox
 
-   To get flake8 and tox, just pip install them into your virtualenv. 
+   To get flake8 and tox, just pip install them into your virtualenv.
 
 6. Commit your changes and push your branch to GitHub::
 
@@ -100,8 +100,8 @@ Before you submit a pull request, check that it meets these guidelines:
 2. If the pull request adds functionality, the docs should be updated. Put
    your new functionality into a function with a docstring, and add the
    feature to the list in README.rst.
-3. The pull request should work for Python 2.6, 2.7, and 3.3, and for PyPy. Check 
-   https://travis-ci.org/massover/django-bootstrap-select/pull_requests
+3. The pull request should work for Python 2.6, 2.7, and 3.3, and for PyPy. Check
+   https://travis-ci.org/voxy/django-bootstrap-select/pull_requests
    and make sure that the tests pass for all supported Python versions.
 
 Tips

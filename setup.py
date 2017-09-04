@@ -47,11 +47,11 @@ history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 setup(
     name='django-bootstrap-select',
     version=version,
-    description="""A wDjango wrapper for the Bootstrap Select library""",
+    description="""A Django wrapper for the Bootstrap Select library""",
     long_description=readme + '\n\n' + history,
     author='Joshua Massover',
     author_email='joshua.massover@gmail.com',
-    url='https://github.com/massover/django-bootstrap-select',
+    url='https://github.com/voxy/django-bootstrap-select',
     packages=[
         'bootstrap_select',
     ],
