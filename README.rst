@@ -13,6 +13,11 @@ Django Bootstrap Select
 
 A Django wrapper for the Bootstrap Select library
 
+Documentation
+-------------
+
+The full documentation is at https://django-bootstrap-select.readthedocs.io.
+
 Quickstart
 ----------
 
