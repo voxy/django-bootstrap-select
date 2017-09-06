@@ -31,3 +31,5 @@ if django.VERSION >= (1, 10):
     MIDDLEWARE = ()
 else:
     MIDDLEWARE_CLASSES = ()
+
+STATIC_URL = '/static/'

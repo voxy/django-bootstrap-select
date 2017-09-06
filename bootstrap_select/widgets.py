@@ -5,23 +5,37 @@ from django.utils.encoding import force_text
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
+from . import settings as bootstrap_select_settings
+
 
 class BootstrapSelect(Select):
 
     @property
     def media(self):
+        css = {
+          'all': ['//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css',  # noqa
+                  static('bootstrap_select/bootstrap_select.css'), ]
+        }
+        js = ['//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js', ]  # noqa
+
+        if self.bootstrap_css:
+            css['all'] = ['//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'] + css['all']  # noqa
+        if self.bootstrap_js:
+            js = ['//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'] + js
+        if self.jquery_js:
+            js = ['//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'] + js
+
         return forms.Media(
-            css={
-                'all': ('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
-                        '//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css',  # noqa
-                        static('bootstrap_select/bootstrap_select.css'),)
-            },
-            js=('//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js',
-                '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
-                '//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js',)  # noqa
+            css=css,
+            js=js,
         )
 
-    def __init__(self, attrs=None, choices=()):
+    def __init__(self, attrs=None, choices=(), **kwargs):
+        assets = bootstrap_select_settings.BOOTSTRAP_SELECT_ASSETS
+        self.bootstrap_js = kwargs.get('bootstrap_js', assets['bootstrap_js'])
+        self.bootstrap_css = kwargs.get('bootstrap_css', assets['bootstrap_css'])
+        self.jquery_js = kwargs.get('jquery_js', assets['jquery_js'])
+
         if attrs is None:
             attrs = {'class': 'selectpicker'}
         else:

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from django.test import SimpleTestCase
+from django.test import SimpleTestCase, override_settings
 from django import forms
 
 from bootstrap_select import BootstrapSelect
@@ -29,3 +29,50 @@ class TestBootstrapSelect(SimpleTestCase):
         form = ExampleForm()
         class_html = 'class="hello-world selectpicker"'
         self.assertIn(class_html, form.as_p())
+
+    def test_default_media_css(self):
+        class ExampleForm(forms.Form):
+            icon = forms.URLField(widget=BootstrapSelect(choices=self.CHOICES))
+
+        form = ExampleForm()
+        links = list(form.media.render_css())
+        self.assertEqual(len(links), 3)
+
+        scripts = list(form.media.render_js())
+        self.assertEqual(len(scripts), 3)
+
+    def test_it_allows_kwargs_for_assets(self):
+        class ExampleForm(forms.Form):
+            icon = forms.URLField(
+                widget=BootstrapSelect(choices=self.CHOICES,
+                                       bootstrap_js=False,
+                                       bootstrap_css=False,
+                                       jquery_js=False,)
+            )
+
+        form = ExampleForm()
+
+        links = list(form.media.render_css())
+        self.assertEqual(len(links), 2)
+
+        scripts = list(form.media.render_js())
+        self.assertEqual(len(scripts), 1)
+
+    ALL_FALSE_ASSETS = {
+        'bootstrap_js': False,
+        'bootstrap_css': False,
+        'jquery_js': False,
+    }
+
+    @override_settings(BOOTSTRAP_SELECT_ASSETS=ALL_FALSE_ASSETS)
+    def test_it_allows_django_settings_for_assets(self):
+        class ExampleForm(forms.Form):
+            icon = forms.URLField(widget=BootstrapSelect(choices=self.CHOICES))
+
+        form = ExampleForm()
+
+        links = list(form.media.render_css())
+        self.assertEqual(len(links), 2)
+
+        scripts = list(form.media.render_js())
+        self.assertEqual(len(scripts), 1)
