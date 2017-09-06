@@ -13,13 +13,18 @@ Django Bootstrap Select
 
 A Django wrapper for the Bootstrap Select library
 
-Documentation
--------------
-
-The full documentation is at https://django-bootstrap-select.readthedocs.io.
-
 Quickstart
 ----------
+
+Need to render an image in a select box?
+
+Turn this:
+
+.. image:: docs/img/select_box.png
+
+Into this:
+
+.. image:: docs/img/bootstrap_select_box.png
 
 Install Django Bootstrap Select::
 

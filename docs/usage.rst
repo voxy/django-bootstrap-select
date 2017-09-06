@@ -2,25 +2,31 @@
 Usage
 =====
 
-To use Django Bootstrap Select in a project, add it to your `INSTALLED_APPS`:
+Assets
+======
+
+If you do not want some of the assets provided, there are two options:
+
+Assets can be controlled globally through `settings`:
 
 .. code-block:: python
 
-    INSTALLED_APPS = (
-        ...
-        'bootstrap_select.apps.BootstrapSelectConfig',
-        ...
-    )
+    BOOTSTRAP_SELECT_ASSETS = {
+        'bootstrap_js': False,
+        'bootstrap_css': False,
+        'jquery_js': False,
 
-Add Django Bootstrap Select's URL patterns:
+    }
+
+
+Assets can also be declared as widget kwargs:
 
 .. code-block:: python
 
-    from bootstrap_select import urls as bootstrap_select_urls
-
-
-    urlpatterns = [
-        ...
-        url(r'^', include(bootstrap_select_urls)),
-        ...
-    ]
+    class ExampleForm(forms.Form):
+        icon = forms.URLField(
+                widget=BootstrapSelect(choices=self.CHOICES,
+                                       bootstrap_js=False,
+                                       bootstrap_css=False,
+                                       jquery_js=False,)
+        )

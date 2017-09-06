@@ -22,6 +22,10 @@ cwd = os.getcwd()
 parent = os.path.dirname(cwd)
 sys.path.append(parent)
 
+os.environ['DJANGO_SETTINGS_MODULE'] = 'tests.settings'
+import django
+django.setup()
+
 import bootstrap_select
 
 # -- General configuration -----------------------------------------------------
