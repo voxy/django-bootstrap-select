@@ -6,6 +6,7 @@ from django.utils.html import escape
 from .models import Icon
 from bootstrap_select import BootstrapSelect
 
+
 def get_choices():
     filenames = ['face.jpg', 'dog.jpg', ]
     choices = []
@@ -17,11 +18,12 @@ def get_choices():
 
 
 class IconAdminForm(forms.ModelForm):
-    icon = forms.URLField(widget=BootstrapSelect(choices=get_choices()))
+    icon = forms.URLField(widget=BootstrapSelect(choices=get_choices(),))
 
     class Meta:
         model = Icon
         fields = ('icon', 'name', )
+
 
 @admin.register(Icon)
 class IconAdmin(admin.ModelAdmin):
