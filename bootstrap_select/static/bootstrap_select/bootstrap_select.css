@@ -1,3 +1,7 @@
 .submit-row a.deletelink {
   height: auto;
 }
+
+.form-row {
+  overflow: visible;
+}
