@@ -60,8 +60,10 @@ Features
 --------
 
 * Renders labels from form choices as `custom-content`_.
+* Renders tokens from form choices for `live-search`_.
 
 .. _`custom-content`: https://silviomoreto.github.io/bootstrap-select/examples/#custom-content
+.. _`live-search`: https://silviomoreto.github.io/bootstrap-select/examples/#live-search
 
 Running Tests
 -------------
