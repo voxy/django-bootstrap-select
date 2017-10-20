@@ -19,6 +19,20 @@ class TestBootstrapSelect(SimpleTestCase):
                        'example.com/face.jpg</option>')
         self.assertInHTML(option_html, form.as_p())
 
+    def test_it_adds_tokens_for_search_if_live_search_attribute_is_set(self):
+        class ExampleForm(forms.Form):
+            icon = forms.URLField(widget=BootstrapSelect(
+                choices=self.CHOICES,
+                attrs={'data-live-search': "true"},
+            ))
+
+        form = ExampleForm()
+        option_html = ('<option data-content="example.com/face.jpg" '
+                       ' data-tokens="face" value="face" >'
+                       'example.com/face.jpg</option>')
+        self.assertInHTML(option_html, form.as_p())
+
+
     def test_it_allows_additional_class_attrs(self):
         class ExampleForm(forms.Form):
             icon = forms.URLField(

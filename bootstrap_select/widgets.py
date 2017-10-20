@@ -1,3 +1,5 @@
+import json
+
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django import forms
 from django.forms import Select
@@ -57,15 +59,20 @@ class BootstrapSelect(Select):
                 selected_choices.remove(option_value)
         else:
             selected_html = ''
-        return format_html('<option value="{}" data-content="{}" {}>{}</option>',
-                           option_value,
-                           force_text(option_label),
-                           selected_html,
-                           force_text(option_label),)
+
+        html = '<option value="{}"'.format(option_value)
+        html += ' data-content="{}"'.format(force_text(option_label))
+        if self.attrs.get('data-live-search'):
+            html += ' data-tokens="{}"'.format(option_value)
+        html += '{}>{}</option>'.format(selected_html, force_text(option_label))
+        return format_html(html)
 
     # Django 1.11
     def create_option(self, name, value, label, selected, index, subindex=None, attrs=None):
         option = super(BootstrapSelect, self).create_option(name, value, label, selected,
                                                             index, subindex=None, attrs=None)
         option['attrs']['data-content'] = label
+
+        if self.attrs.get('data-live-search'):
+            option['attrs']['data-tokens'] = value
         return option

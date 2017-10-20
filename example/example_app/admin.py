@@ -18,7 +18,10 @@ def get_choices():
 
 
 class IconAdminForm(forms.ModelForm):
-    icon = forms.URLField(widget=BootstrapSelect(choices=get_choices(),))
+    icon = forms.URLField(widget=BootstrapSelect(
+        choices=get_choices(),
+        attrs={'data-live-search': "true"}
+    ))
 
     class Meta:
         model = Icon
