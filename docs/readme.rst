@@ -13,18 +13,23 @@ Django Bootstrap Select
 
 A Django wrapper for the Bootstrap Select library
 
+Documentation
+-------------
+
+The full documentation is at https://django-bootstrap-select.readthedocs.io.
+
 Quickstart
 ----------
 
-Have you ever tried to render an image inside a select box?
+Need to render an image in a select box?
 
 Turn this:
 
-.. image:: ./img/select_box.png
+.. image:: docs/img/select_box.png
 
 Into this:
 
-.. image:: ./img/bootstrap_select_box.png
+.. image:: docs/img/bootstrap_select_box.png
 
 Install Django Bootstrap Select::
 
@@ -55,8 +60,10 @@ Features
 --------
 
 * Renders labels from form choices as `custom-content`_.
+* Renders tokens from form choices for `live-search`_.
 
 .. _`custom-content`: https://silviomoreto.github.io/bootstrap-select/examples/#custom-content
+.. _`live-search`: https://silviomoreto.github.io/bootstrap-select/examples/#live-search
 
 Running Tests
 -------------
