@@ -32,7 +32,6 @@ class TestBootstrapSelect(SimpleTestCase):
                        'example.com/face.jpg</option>')
         self.assertInHTML(option_html, form.as_p())
 
-
     def test_it_allows_additional_class_attrs(self):
         class ExampleForm(forms.Form):
             icon = forms.URLField(
