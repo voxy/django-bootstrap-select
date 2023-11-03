@@ -1,7 +1,7 @@
 from django.templatetags.static import static
 from django import forms
 from django.forms import Select
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
@@ -49,7 +49,7 @@ class BootstrapSelect(Select):
     def render_option(self, selected_choices, option_value, option_label):
         if option_value is None:
             option_value = ''
-        option_value = force_text(option_value)
+        option_value = force_str(option_value)
         if option_value in selected_choices:
             selected_html = mark_safe(' selected="selected"')
             if not self.allow_multiple_selected:
@@ -59,10 +59,10 @@ class BootstrapSelect(Select):
             selected_html = ''
 
         html = '<option value="{}"'.format(option_value)
-        html += ' data-content="{}"'.format(force_text(option_label))
+        html += ' data-content="{}"'.format(force_str(option_label))
         if self.attrs.get('data-live-search'):
             html += ' data-tokens="{}"'.format(option_value)
-        html += '{}>{}</option>'.format(selected_html, force_text(option_label))
+        html += '{}>{}</option>'.format(selected_html, force_str(option_label))
         return format_html(html)
 
     # Django 1.11
