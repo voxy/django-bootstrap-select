@@ -5,3 +5,12 @@
 .form-row {
   overflow: visible;
 }
+
+.form-row.field-icon {
+  overflow: hidden;
+}
+
+.bootstrap-select .dropdown-menu {
+  height: 500px;
+  width: 500px;
+}
