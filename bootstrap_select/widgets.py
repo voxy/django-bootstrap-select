@@ -19,9 +19,9 @@ class BootstrapSelect(Select):
         js = ['//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js', ]  # noqa
 
         if self.bootstrap_css:
-            css['all'] = ['//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'] + css['all']  # noqa
+            css['all'] = ['//maxcdn.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css'] + css['all']  # noqa
         if self.bootstrap_js:
-            js = ['//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'] + js
+            js = ['//maxcdn.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.min.js'] + js
         if self.jquery_js:
             js = ['//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'] + js
 
